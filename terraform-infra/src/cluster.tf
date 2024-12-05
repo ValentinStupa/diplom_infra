@@ -54,7 +54,7 @@ resource "yandex_compute_instance" "vm_2" {
   }
   network_interface {
     subnet_id = yandex_vpc_subnet.develop-b.id
-    nat       = true
+    nat       = false
   }
   allow_stopping_for_update = true # Позволяет выключить ВМ, внести изменения в конфигурацию железа и включить.
   metadata                  = var.metadata
@@ -82,7 +82,7 @@ resource "yandex_compute_instance" "vm_3" {
   }
   network_interface {
     subnet_id = yandex_vpc_subnet.develop-b.id
-    nat       = true
+    nat       = false
   }
   allow_stopping_for_update = true # Позволяет выключить ВМ, внести изменения в конфигурацию железа и включить.
   metadata                  = var.metadata
