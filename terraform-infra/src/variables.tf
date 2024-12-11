@@ -38,8 +38,7 @@ variable "vpc_platform_id" {
 }
 
 variable "vpc_image" {
-  type = string
-  #default     = "ubuntu-2004-lts"
+  type        = string
   default     = "almalinux-8"
   description = "OS image name"
 }
@@ -61,6 +60,20 @@ variable "metadata" {
   default = {
     serial-port-enable = 1
     ssh-keys           = "almalinux:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEI4AI6/iSUW6k+H8SU5AW7z4wxVZooyapkkXa88tuL2"
-    #ssh-keys = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEI4AI6/iSUW6k+H8SU5AW7z4wxVZooyapkkXa88tuL2"
   }
+}
+
+variable "username" {
+  type        = string
+  default     = "almalinux"
+  description = "Ssh user"
+  validation {
+    condition     = contains(["almalinux"], var.username)
+    error_message = "Invalid username"
+  }
+}
+
+variable "ssh_key_path" {
+  type    = string
+  default = "~/.ssh/dev_study.pub"
 }
